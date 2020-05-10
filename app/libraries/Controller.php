@@ -27,8 +27,7 @@ class Controller {
             $model = $model."Model";
             require_once '../app/models/' . $model . '.php';
         }
-       
-
+        
         //instantiate model
         return new $model();
     }
@@ -43,4 +42,5 @@ class Controller {
             die('view not found');
         }
     }
+    
 }

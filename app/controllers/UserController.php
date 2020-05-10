@@ -1,11 +1,5 @@
 <?php
 
-/* 
- * Contributor: Franz
- * Date Modified: May 9, 2020
- * 
- * Description: User Controller.
- */
 class UserController extends Controller{
 
     public function index(){
@@ -14,6 +8,18 @@ class UserController extends Controller{
 
         $data = [
             'title' => 'User Page',
+        ];
+
+        $this->renderView('pages/index', $data);
+    }
+    
+    
+    public function view(){
+        
+        $user = $this->initModel('User');
+
+        $data = [
+            'title' => 'View User Page',
         ];
 
         $this->renderView('pages/index', $data);

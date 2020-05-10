@@ -24,16 +24,16 @@
                 //unset 0 index
                 unset($url[0]);
             }
-
+            
             //require controller
             require_once '../app/controllers/' . $this->currentController . '.php';
 
             
             //instantiate controller class
-            $this->currentController = new $this->currentController;
-
+            $controllerName = $this->currentController;
+            $this->currentController = new $controllerName;
+            
             //check for the second part of the url
-
             if(isset($url[1])){
                 //check to see if method exist
                 if(method_exists($this->currentController, $url[1])){
@@ -41,7 +41,10 @@
 
                     //unset 1 index
                     unset($url[1]);
+                } else {
+                    die('Method '.$url[1].' is not found in '.$controllerName);
                 }
+                
             }
 
            // get params
